@@ -1,10 +1,10 @@
 name: unit_tree_data_structure
 description: "The tree data structure"
 version: 0.0.1
-homepage:
+repository: https://github.com/nvbien2000/unit_tree_data_structure
 
 environment:
-  sdk: ">=2.17.0"
+  sdk: ">=2.17.0 <4.0.0"
   flutter: ">=1.17.0"
 
 dependencies:
