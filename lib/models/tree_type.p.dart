@@ -59,7 +59,7 @@ class TreeType<T extends AbsNodeType> {
       data: data,
       children: [],
       parent: parent,
-      isChildrenLoadedLazily: json['isChildrenLoadedLazily'],
+      isChildrenLoadedLazily: json['isChildrenLoadedLazily'] ?? false,
     );
 
     var children = (json['children'] as List)

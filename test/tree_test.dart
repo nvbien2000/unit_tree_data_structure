@@ -9,7 +9,7 @@ import 'package:unit_tree_data_structure/unit_tree_data_structure.dart';
 
 void main() {
   test(
-    'from json test',
+    'test fromJson full data',
     () {
       Map<String, dynamic> map = {
         "data": {
@@ -39,6 +39,44 @@ void main() {
           },
         ],
         "isChildrenLoadedLazily": false,
+      };
+
+      var tree = TreeType.fromJson<EasyNodeType>(
+        json: map,
+        parent: null,
+        implFromJson: EasyNodeType.fromJson,
+      );
+      expect(tree.data.id, 1);
+      expect(tree.children[0].data.id, 2);
+    },
+  );
+
+  test(
+    'test fromJson missing data',
+    () {
+      Map<String, dynamic> map = {
+        "data": {
+          "id": 1,
+          "title": "root",
+        },
+        "children": [
+          {
+            "data": {
+              "id": 2,
+              "title": "child 1",
+            },
+            "children": [
+              {
+                "data": {
+                  "id": 3,
+                  "title": "child 2",
+                  "isInner": false,
+                },
+                "children": [],
+              },
+            ],
+          },
+        ],
       };
 
       var tree = TreeType.fromJson<EasyNodeType>(

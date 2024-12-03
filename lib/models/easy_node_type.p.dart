@@ -26,15 +26,15 @@ class EasyNodeType extends AbsNodeType {
 
   static T fromJson<T extends AbsNodeType>(Map<String, dynamic> json) {
     return EasyNodeType(
-      id: json['id'],
-      title: json['title'],
+      id: json['id'] as dynamic,
+      title: json['title'] as String,
       subtitle: json['subtitle'],
-      isInner: json['isInner'],
-      isUnavailable: json['isUnavailable'],
-      isChosen: json['isChosen'],
-      isExpanded: json['isExpanded'],
-      isFavorite: json['isFavorite'],
-      isShowedInSearching: json['isShowedInSearching'],
+      isInner: json['isInner'] ?? true,
+      isUnavailable: json['isUnavailable'] ?? false,
+      isChosen: json['isChosen'] ?? false,
+      isExpanded: json['isExpanded'] ?? false,
+      isFavorite: json['isFavorite'] ?? false,
+      isShowedInSearching: json['isShowedInSearching'] ?? true,
     ) as T;
   }
 
