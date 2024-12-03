@@ -49,6 +49,13 @@ class TreeType<T extends AbsNodeType> {
     return newData;
   }
 
+  Map<String, dynamic> toJson() {
+    return {
+      "data": data.toJson(),
+      "children": children.map((e) => e.toJson()).toList(),
+    };
+  }
+
   @override
   String toString() =>
       "TreeType{current: ${data.title}, parent: ${parent?.data.title}, ${children.length} children}";

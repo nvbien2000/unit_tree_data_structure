@@ -206,33 +206,30 @@ void _updateAncestorsToDisplayable<T extends AbsNodeType>(TreeType<T> tree) {
   _updateAncestorsToDisplayable(tree.parent!);
 }
 
-/// insert node as a child of [root]
+/// insert node as a child of [parent]
 void insertNode<T extends AbsNodeType>(
-  TreeType<T> root,
+  TreeType<T> parent,
   T node, {
   bool isTreeMultipleChoice = true,
 }) {
-  if (root.isLeaf) {
-    throw ErrInsertToLeaf(root, node);
+  if (parent.isLeaf) {
+    throw ErrInsertToLeaf(parent, node);
   }
 
   if (node.isChosen == null && !isTreeMultipleChoice) {
-    throw ErrInsertToTreeSingleChoice(root, node);
+    throw ErrInsertToTreeSingleChoice(parent, node);
   }
 
   TreeType<T> newTree = TreeType<T>(
     data: node,
-    parent: root,
+    parent: parent,
     children: [],
   );
 
-  root.children.add(newTree);
+  parent.children.add(newTree);
 
-  if (isTreeMultipleChoice) {
-    updateTreeMultipleChoice(newTree, node.isChosen);
-  } else {
-    updateTreeSingleChoice(newTree, node.isChosen!);
-  }
+  var root = findRoot(parent);
+  updateAllUnavailableNodes(root);
 }
 
 /// delete a branch with id
@@ -243,5 +240,9 @@ void deleteBranchByID<T extends AbsNodeType>(TreeType<T> tree, dynamic id) {
 
   if (branch.isRoot) throw ErrDeletingRoot(tree);
 
-  branch.parent!.children.remove(branch);
+  var parent = branch.parent!;
+  parent.children.remove(branch);
+
+  var root = findRoot(parent);
+  updateAllUnavailableNodes(root);
 }

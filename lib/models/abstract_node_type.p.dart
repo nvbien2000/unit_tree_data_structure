@@ -55,7 +55,20 @@ abstract class AbsNodeType {
 
   T clone<T extends AbsNodeType>();
 
+  Map<String, dynamic> toJson() {
+    return {
+      "id": id,
+      "title": title,
+      "isInner": isInner,
+      "isUnavailable": isUnavailable,
+      "isChosen": isChosen,
+      "isExpanded": isExpanded,
+      "isFavorite": isFavorite,
+      "isShowedInSearching": isShowedInSearching,
+    };
+  }
+
   @override
   String toString() =>
-      "AbsNodeType{title: $title, isInner: $isInner, isUnavailable: $isUnavailable, isChosen: $isChosen, isExpanded: $isExpanded}";
+      "title: $title, isInner: $isInner, isUnavailable: $isUnavailable, isChosen: $isChosen, isExpanded: $isExpanded";
 }

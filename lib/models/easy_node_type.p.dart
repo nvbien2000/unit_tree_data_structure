@@ -4,13 +4,25 @@ part of '../unit_tree_data_structure.dart';
 /// [subtitle] property.
 class EasyNodeType extends AbsNodeType {
   EasyNodeType({
-    required String super.id,
+    required super.id,
     required super.title,
+    super.isInner,
+    super.isUnavailable,
+    super.isChosen,
+    super.isExpanded,
+    super.isFavorite,
+    super.isShowedInSearching,
     this.subtitle,
-    super.isInner = true,
   });
 
   String? subtitle;
+
+  @override
+  Map<String, dynamic> toJson() {
+    var result = super.toJson();
+    result["subtitle"] = subtitle;
+    return result;
+  }
 
   @override
   T clone<T extends AbsNodeType>() {
