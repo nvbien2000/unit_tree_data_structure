@@ -55,6 +55,11 @@ abstract class AbsNodeType {
 
   T clone<T extends AbsNodeType>();
 
+  static T fromJson<T extends AbsNodeType>(Map<String, dynamic> json) {
+    // Implement this method in subclasses
+    throw UnimplementedError();
+  }
+
   Map<String, dynamic> toJson() {
     return {
       "id": id,

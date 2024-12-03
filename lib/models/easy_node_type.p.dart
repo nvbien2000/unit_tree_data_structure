@@ -24,6 +24,20 @@ class EasyNodeType extends AbsNodeType {
     return result;
   }
 
+  static T fromJson<T extends AbsNodeType>(Map<String, dynamic> json) {
+    return EasyNodeType(
+      id: json['id'],
+      title: json['title'],
+      subtitle: json['subtitle'],
+      isInner: json['isInner'],
+      isUnavailable: json['isUnavailable'],
+      isChosen: json['isChosen'],
+      isExpanded: json['isExpanded'],
+      isFavorite: json['isFavorite'],
+      isShowedInSearching: json['isShowedInSearching'],
+    ) as T;
+  }
+
   @override
   T clone<T extends AbsNodeType>() {
     var newData = EasyNodeType(
@@ -31,11 +45,11 @@ class EasyNodeType extends AbsNodeType {
       title: title,
       subtitle: subtitle,
       isInner: isInner,
+      isUnavailable: isUnavailable,
+      isChosen: isChosen,
+      isExpanded: isExpanded,
+      isFavorite: isFavorite,
     );
-    newData.isUnavailable = isUnavailable;
-    newData.isChosen = isChosen;
-    newData.isExpanded = isExpanded;
-    newData.isFavorite = isFavorite;
 
     return newData as T;
   }

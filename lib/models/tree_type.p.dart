@@ -49,14 +49,40 @@ class TreeType<T extends AbsNodeType> {
     return newData;
   }
 
+  static TreeType<T> fromJson<T extends AbsNodeType>({
+    required Map<String, dynamic> json,
+    required TreeType<T>? parent,
+    required T Function(Map<String, dynamic>) implFromJson,
+  }) {
+    var data = implFromJson(json['data']);
+    var tree = TreeType<T>(
+      data: data,
+      children: [],
+      parent: parent,
+      isChildrenLoadedLazily: json['isChildrenLoadedLazily'],
+    );
+
+    var children = (json['children'] as List)
+        .map((childJson) => TreeType.fromJson<T>(
+              json: childJson,
+              parent: tree,
+              implFromJson: implFromJson,
+            ))
+        .toList();
+    tree.children = children;
+
+    return tree;
+  }
+
   Map<String, dynamic> toJson() {
     return {
       "data": data.toJson(),
       "children": children.map((e) => e.toJson()).toList(),
+      "isChildrenLoadedLazily": isChildrenLoadedLazily,
     };
   }
 
   @override
   String toString() =>
-      "TreeType{current: ${data.title}, parent: ${parent?.data.title}, ${children.length} children}";
+      "current: ${data.title}, parent: ${parent?.data.title}, children: ${children.length}";
 }
