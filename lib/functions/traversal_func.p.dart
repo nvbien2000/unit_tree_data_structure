@@ -118,11 +118,15 @@ TreeType<T>? findTreeWithId<T extends AbsNodeType>(
 
 /// Using DFS to return all the trees if each of root's data contains searching
 /// text. The tree must be `available`.
+///
+/// Text is transformed to lowercase before searching.
 void searchAllTreesWithTitleDFS<T extends AbsNodeType>(
     TreeType<T> tree, String text, List<TreeType<T>> result) {
   if (tree.data.isUnavailable) return;
 
-  if (tree.data.title.contains(text)) result.add(tree);
+  String titleL = tree.data.title.toLowerCase();
+  String textL = text.toLowerCase();
+  if (titleL.contains(textL)) result.add(tree);
 
   for (var child in tree.children) {
     searchAllTreesWithTitleDFS(child, text, result);

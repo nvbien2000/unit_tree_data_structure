@@ -155,6 +155,8 @@ void _updateAncestorsToNull<T extends AbsNodeType>(TreeType<T> tree) {
 }
 
 /// Update field `isShowedInSearching` of every node based on searching text.
+///
+/// Text is transformed to lowercase before searching.
 void updateTreeWithSearchingTitle<T extends AbsNodeType>(
     TreeType<T> tree, String searchingText) {
   var root = findRoot(tree);

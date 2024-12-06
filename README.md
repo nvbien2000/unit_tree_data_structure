@@ -5,7 +5,7 @@ LinkedIn: linkedin.com/in/nvbien2000
 -->
 # unit_tree_data_structure
 
-A tree data structure that supports unit tree-view. Check out the usage: [unit_tree_flutter](https://pub.dev/packages/unit_tree_flutter). This is a package that is further developed by the author of the [recursive_tree_flutter](https://pub.dev/packages/recursive_tree_flutter).
+A tree data structure that supports tree-view. Check out the usage: [recursive_tree_flutter](https://pub.dev/packages/recursive_tree_flutter).
 
 ## Features
 
@@ -15,7 +15,7 @@ Inspired by the structure of a directory tree on a computer, there are two types
 	- `id`: _required_, dynamic.
     - `title`: _required_, String.
     - `isInner`:  boolean, default is **true**.
-    - `isUnavailable`:  boolean, default is **false**.
+    - `isUnavailable`:  boolean, default is **false**. *It is defined by default as: If a branch doesn't contains any leaf, it is unavailable (or un-chosenable).*
     - `isChosen`: nullable boolean, default is **false**.
     - `isExpanded`: boolean, default is **false**.
     - `isFavorite`: boolean, default is **false**.

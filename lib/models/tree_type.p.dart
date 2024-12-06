@@ -62,7 +62,7 @@ class TreeType<T extends AbsNodeType> {
       isChildrenLoadedLazily: json['isChildrenLoadedLazily'] ?? false,
     );
 
-    var children = (json['children'] as List)
+    var children = ((json['children'] as List?) ?? [])
         .map((childJson) => TreeType.fromJson<T>(
               json: childJson,
               parent: tree,
