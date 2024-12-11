@@ -1,4 +1,7 @@
 ## 1.0.0
+* Update copyright.
+
+## 1.0.0
 * Add `fromJson()` to easily convert from `Map<String, dynamic>` to `TreeType`.
 * Update: Search by lowercase.
 * Fix bugs.

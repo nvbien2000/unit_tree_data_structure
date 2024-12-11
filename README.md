@@ -5,7 +5,7 @@ LinkedIn: linkedin.com/in/nvbien2000
 -->
 # unit_tree_data_structure
 
-A tree data structure that supports tree-view. Check out the usage: [recursive_tree_flutter](https://pub.dev/packages/recursive_tree_flutter).
+A tree data structure that supports tree-view. Check out the usage: [unit_tree_flutter](https://pub.dev/packages/unit_tree_flutter).
 
 ## Features
 
